@@ -241,3 +241,209 @@ npm run preview
 - **State Management**: Uses React Context + Reducer for simplicity and to avoid external dependencies like Redux or Zustand.
 - **Styling**: TailwindCSS provides rapid UI development with consistent design.
 - **Type Safety**: Full TypeScript implementation for better developer experience and fewer runtime errors.
+
+## Deployment
+
+This project is ready to deploy to Vercel or Render with zero configuration.
+
+### Deploy to Vercel (Recommended)
+
+#### Method 1: Vercel CLI
+
+1. Install Vercel CLI:
+```bash
+npm i -g vercel
+```
+
+2. Deploy from project directory:
+```bash
+cd /a0/usr/projects/family_tree_maker
+vercel
+```
+
+3. Follow prompts:
+   - Set up and deploy? **Y**
+   - Which scope? **Your Vercel account**
+   - Link to existing project? **N**
+   - Project name? **family-tree-maker**
+   - In which directory? **./**
+   - Override settings? **N**
+
+4. Your site will be live at `https://family-tree-maker.vercel.app`
+
+#### Method 2: Vercel Website
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and sign in
+3. Click "Add New..." → "Project"
+4. Import your GitHub repository
+5. Configure:
+   - Framework Preset: **Vite**
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+6. Click "Deploy"
+
+Your site will be live in ~1-2 minutes.
+
+### Deploy to Render
+
+#### Method 1: Render Dashboard
+
+1. Push your code to GitHub
+2. Go to [render.com](https://render.com) and sign in
+3. Click "New" → "Static Site"
+4. Connect your GitHub repository
+5. Configure:
+   - Name: **family-tree-maker**
+   - Build Command: `npm install && npm run build`
+   - Publish Directory: `dist`
+   - Environment: `production`
+6. Click "Create Static Site"
+
+Your site will be live at `https://family-tree-maker.onrender.com`
+
+#### Method 2: Render Blueprint
+
+1. Fork this repository to your GitHub
+2. Go to [render.com](https://render.com) → "Blueprints" → "New Blueprint"
+3. Connect your GitHub account
+4. Select your repository
+5. Render will auto-detect the `render.yaml` file
+6. Click "Apply"
+
+### Deploy to Netlify
+
+1. Go to [netlify.com](https://netlify.com) and sign in
+2. Click "Add new site" → "Import an existing project"
+3. Connect your GitHub repository
+4. Configure:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. Click "Deploy site"
+
+### Deploy to GitHub Pages
+
+1. Build the project:
+```bash
+npm run build
+```
+
+2. Install gh-pages:
+```bash
+npm install --save-dev gh-pages
+```
+
+3. Add to `package.json`:
+```json
+"scripts": {
+  "deploy": "gh-pages -d dist"
+}
+```
+
+4. Deploy:
+```bash
+npm run deploy
+```
+
+5. Enable GitHub Pages in repo settings:
+   - Settings → Pages → Source: Deploy from branch
+   - Branch: `gh-pages`, Folder: `/`
+
+### Environment Variables
+
+No environment variables are required for this project. All data is stored in browser localStorage.
+
+### Build Preview
+
+To test the production build locally:
+
+```bash
+npm run build
+npm run preview
+```
+
+Then open `http://localhost:4173`
+
+### Troubleshooting Deployment
+
+**Issue: Build fails with "out of memory"**
+```bash
+# Increase Node memory
+export NODE_OPTIONS=--max-old-space-size=4096
+npm run build
+```
+
+**Issue: Blank page after deployment**
+- Check that `dist` folder contains `index.html`
+- Ensure `vercel.json` or `render.yaml` is in root
+- Check browser console for errors
+
+**Issue: Routes not working (404 on refresh)**
+- For Vercel: `vercel.json` handles rewrites automatically
+- For Render: `render.yaml` handles rewrites automatically
+- For other hosts: Configure SPA rewrites to `index.html`
+
+### Deployment Checklist
+
+- [ ] Code pushed to GitHub
+- [ ] Repository is public (or private with proper auth)
+- [ ] `package.json` has correct build scripts
+- [ ] `vite.config.ts` is configured (default is fine)
+- [ ] No environment variables needed
+- [ ] Deploy platform configured
+- [ ] Site is live and functional
+
+### Post-Deployment
+
+Once deployed:
+
+1. **Test all features**:
+   - Load demo data
+   - Add/edit people
+   - Create relationships
+   - Export JSON/PNG
+   - Pan/zoom tree
+
+2. **Share the link** with family members
+
+3. **Bookmark the site** for quick access
+
+4. **Export data regularly** as backup
+
+### Performance Notes
+
+- **First Load**: ~50KB (compressed)
+- **Build Time**: ~5-10 seconds
+- **Runtime**: No server required, runs entirely in browser
+- **Storage**: Uses browser localStorage (5-10MB typical limit)
+
+### Security Notes
+
+- No backend = no data breaches
+- All data stays on user's device
+- No authentication required
+- No external API calls
+- Safe to deploy publicly
+
+---
+
+## Support
+
+If you encounter issues:
+1. Check browser console for errors
+2. Verify Node.js version (16+)
+3. Clear browser cache
+4. Try incognito mode
+5. Check deployment logs
+
+## Credits
+
+Built with:
+- React 18
+- TypeScript
+- Vite
+- TailwindCSS
+- d3-hierarchy
+- html-to-image
+- lucide-react
