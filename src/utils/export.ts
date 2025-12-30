@@ -19,7 +19,7 @@ export async function exportTreeToPNG(element: HTMLElement, filename: string = '
   }
 }
 
-export function exportTreeToPDF(element: HTMLElement, filename: string = 'family-tree.pdf'): void {
+export function exportTreeToPDF(element: HTMLElement): void {
   // For PDF export, we'll use the browser's print functionality
   // This is a simple approach that works well
   const printWindow = window.open('', '_blank');

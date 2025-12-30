@@ -9,7 +9,7 @@ const NODE_HEIGHT = 80;
 const NODE_SPACING = 20;
 
 const TreeCanvas: React.FC = () => {
-  const { state } = useStore();
+  const { state, dispatch } = useStore();
   const [tree, setTree] = useState<TreeNode | null>(null);
   const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 });
   const [isDragging, setIsDragging] = useState(false);
@@ -115,7 +115,6 @@ const TreeCanvas: React.FC = () => {
           strokeWidth={isFocused ? 3 : isSelected ? 2 : 1}
           className="cursor-pointer"
           onClick={() => {
-            const { dispatch } = require('../store').useStore();
             dispatch({ type: 'SELECT_PERSON', payload: node.id });
           }}
         />

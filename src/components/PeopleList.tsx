@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../store';
-import { Plus, Search, Trash2, Edit2, User } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2 } from 'lucide-react';
 import PersonForm from './PersonForm';
 
 const PeopleList: React.FC = () => {

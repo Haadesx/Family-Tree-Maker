@@ -38,7 +38,7 @@ const TopBar: React.FC = () => {
       alert('No tree to export. Please load demo data or create a tree first.');
       return;
     }
-    exportTreeToPNG(svgElement as HTMLElement);
+    exportTreeToPNG(svgElement as unknown as HTMLElement);
   };
 
   const handleLoadDemo = () => {

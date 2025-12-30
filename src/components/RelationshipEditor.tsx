@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../store';
-import { Link2, UserMinus, UserPlus, Heart, X } from 'lucide-react';
+import { Link2, X } from 'lucide-react';
 
 const RelationshipEditor: React.FC = () => {
   const { state, dispatch } = useStore();

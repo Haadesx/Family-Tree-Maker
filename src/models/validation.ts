@@ -1,4 +1,4 @@
-import { FamilyData, Person, ParentChildEdge, SpouseEdge } from './types';
+import { FamilyData, Person } from './types';
 
 export function generateId(): string {
   return crypto.randomUUID();
